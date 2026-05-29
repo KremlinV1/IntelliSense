@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veilwatch-detection"
+version = "0.1.0"
+description = "YOLOv8 object detection + FAISS watchlist matching."
+requires-python = ">=3.11"
+dependencies = [
+  "veilwatch-contracts",
+  "ultralytics>=8.2,<9",
+  "opencv-python-headless>=4.9,<5",
+  "numpy>=1.26,<3",
+  "faiss-cpu>=1.8,<2",
+  # OpenALPR is invoked via subprocess (see detection.alpr). The `alpr` binary
+  # must be present in the container when ALPR_BACKEND=openalpr; no Python
+  # package dependency is added here.
+  "pydantic-settings>=2.2,<3",
+  "uvloop>=0.19; sys_platform != 'win32'",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

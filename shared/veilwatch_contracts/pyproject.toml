@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veilwatch-contracts"
+version = "0.1.0"
+description = "Shared Kafka event schemas and topic constants for VeilWatch services."
+requires-python = ">=3.11"
+dependencies = [
+  "pydantic>=2.6,<3",
+  "aiokafka>=0.10,<0.12",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

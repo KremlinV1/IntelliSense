@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veilwatch-capture"
+version = "0.1.0"
+description = "RTSP ingestion service: decodes frames, hashes JPEGs, publishes FrameEvent."
+requires-python = ">=3.11"
+dependencies = [
+  "veilwatch-contracts",
+  "opencv-python-headless>=4.9,<5",
+  "numpy>=1.26,<3",
+  "pydantic-settings>=2.2,<3",
+  "uvloop>=0.19; sys_platform != 'win32'",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

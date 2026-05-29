@@ -1,0 +1,13 @@
+{
+  "_comment": "Test watchlist. Replace with operational seed (IDs + ArcFace embeddings + real plate strings) before any production deployment.",
+  "identities": [
+    { "identity_id": "WL-0001", "label": "test_subject_alpha" },
+    { "identity_id": "WL-0002", "label": "test_subject_bravo" },
+    { "identity_id": "WL-0003", "label": "test_subject_charlie" }
+  ],
+  "plate_identities": [
+    { "identity_id": "VL-0001", "plate_text": "ABC 123",  "label": "stolen_vehicle_alpha" },
+    { "identity_id": "VL-0002", "plate_text": "XYZ-789",  "label": "amber_alert_bravo" },
+    { "identity_id": "VL-0003", "plate_text": "7H4RD",    "label": "warrant_subject_charlie" }
+  ]
+}

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veilwatch-tracker"
+version = "0.2.0"
+description = "Cross-camera persistent identity tracker (OSNet re-ID based)."
+requires-python = ">=3.11"
+dependencies = [
+  "veilwatch-contracts",
+  "numpy>=1.26,<3",
+  "pydantic-settings>=2.2,<3",
+  # Optional at runtime: only imported when TRACKER_BANK_BACKEND=redis.
+  # Keep it declared so the container image has it available to flip on.
+  "redis>=5.0,<6",
+  "uvloop>=0.19; sys_platform != 'win32'",
+]
+
+[project.optional-dependencies]
+test = [
+  "fakeredis>=2.23,<3",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

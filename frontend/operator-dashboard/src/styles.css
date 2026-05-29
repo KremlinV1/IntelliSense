@@ -1,0 +1,66 @@
+/* Leaflet's dark-tile-friendly overrides. Ships without its own CSS so we
+   load it here rather than in every map-using component. Must come before
+   the @tailwind directives per CSS spec. */
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+/* Leaflet container and controls — match the ops-console palette. */
+.leaflet-container {
+  background: #0b0f17;
+}
+.leaflet-control-attribution {
+  background: rgba(11, 15, 23, 0.7) !important;
+  color: #94a3b8 !important;
+}
+.leaflet-control-attribution a {
+  color: #cbd5e1 !important;
+}
+/* Dim the default tiles so markers pop. A real deployment would ship a
+   dark-themed tile source; for dev, CSS filter gets us 80% of the way. */
+.leaflet-tile {
+  filter: brightness(0.55) contrast(1.05) hue-rotate(190deg);
+}
+
+/* Thin scrollbars for list panels. Webkit only; Firefox falls back. */
+.scroll-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #273349;
+  border-radius: 3px;
+}
+.scroll-thin::-webkit-scrollbar-thumb:hover {
+  background: #3a4660;
+}
+
+/* Pulse for live connection status chip and camera-handoff markers. */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: currentColor;
+  opacity: 0.4;
+  animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

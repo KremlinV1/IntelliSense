@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+build/
+*.log
+# model weights & local frame store
+*.pt
+*.onnx
+frames/
+frames-dev/
+data/
+.DS_Store
+# local dev sqlite
+*.db
+*.sqlite
+*.sqlite3
+# node
+node_modules/
+frontend/**/dist/
